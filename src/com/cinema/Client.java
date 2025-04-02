@@ -13,7 +13,7 @@ public class Client
     {
         setNom(nom); // Utilisation du setter pour la validation
         setPrenom(prenom); // Utilisation du setter pour la validation
-        this.email = email; // Utilisation du setter pour la validation
+        this.email = email;
         setTelephone(telephone); // Utilisation du setter pour la validation
     }
 

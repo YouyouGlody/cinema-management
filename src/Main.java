@@ -4,14 +4,20 @@ import com.cinema.Film;
 import com.cinema.Salle;
 
 public class Main {
-    public static void main(String[] args)
-    {
-     //Créantion d'une instance de cinéma
+    public static void main(String[] args) {
+        //Créantion d'une instance de cinéma
         Cinema cinema = new Cinema();
 
         //Création de films
-        Film film1 = new Film("Inception", 148, "Science-Fiction", "Adulte");
-        Film film2= new Film("Toy Story", 81, "Animation", "Enfant");
+        Film film1 = null;
+        Film film2 = null;
+        try {
+            film1 = new Film("Inception", 148, "Science-Fiction", "Adulte");
+            film2 = new Film("Toy Story", 81, "Animation", "Enfant");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erreur l'ors de l'ajout d'un film : " + e.getMessage());
+        }
+
 
         //Ajout des films au cinéma
         cinema.ajouterFilm(film1);
@@ -22,8 +28,13 @@ public class Main {
         Salle salle2 = new Salle(2, 80);
 
         // Ajout des salles au cinéma
-        cinema.ajouterSalle(salle1);
-        cinema.ajouterSalle(salle2);
+        try {
+            cinema.ajouterSalle(salle1);
+            cinema.ajouterSalle(salle2);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erreur l'ors de l'ajout d'une salle : " + e.getMessage());
+        }
+
 
         // Programmation des films dans la salle
 
@@ -39,9 +50,14 @@ public class Main {
         Client client1 = new Client("Youyou Mpia", "Glody", "youyoustyve@gmail.com", "693535260");
         Client client2 = new Client("Martin", "Alice", "alicemartin@exemple.com", "0123456789");
 
-        // Ajout des clients au cinéma
-        cinema.creerReservation(1, client1, film1, salle1, 2);
-        cinema.creerReservation(2, client2, film2, salle2, 5);
+        // Création des reservation par les clients au cinéma
+        try {
+            cinema.creerReservation(1, client1, film1, salle1, 2);
+            cinema.creerReservation(2, client2, film2, salle2, 5);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erreur lors de la création d'une réservation : " + e.getMessage());
+        }
+
 
         // Paiement des reservations
 
@@ -50,7 +66,6 @@ public class Main {
         // Affichage des informations du cinéma
         cinema.afficherInfos();
 
-        
 
     }
 }

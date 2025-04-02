@@ -2,7 +2,7 @@ package com.cinema;
 
 public class Film
 {
-    //Attributs
+    //Attributs privés pour encapsuler les données du film
     private String titre;
     private int duree; // Durée en minutes
     private String genre;
@@ -20,6 +20,8 @@ public class Film
         this.genre = genre;
         this.classification = classification;
     }
+
+    // Getters & Setters
 
     // Getter pour obtenir le titre du film
     public String getTitre()
